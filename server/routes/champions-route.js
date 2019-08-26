@@ -1,10 +1,15 @@
-const express = require("express");
+import express from "express";
+
 const router = express.Router();
-const foo = require("../data/champions.json");
+import ChampionModel from "../models/champion-model.js";
 
 router.get("/", function(req, res) {
-  res.send(foo);
+  ChampionModel.find(function(err, champions) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(champions);
+  });
 });
 
-// • Export router to use it on other modules
-module.exports = router;
+export default router;

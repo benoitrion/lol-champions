@@ -1,12 +1,19 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import path from "path";
+import championsRoute from "./server/routes/champions-route";
+import config from "./server/config/config.dev";
+import connectToDb from "./server/db/connect";
+
+const port = config.serverPort;
+
+connectToDb();
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, "client/dist")));
 
 // Set champions route
-app.use("/api/champions", require("./server/routes/champions-route"));
+app.use("/api/champions", championsRoute);
 
 // Handles not found endpoints
 app.get("/api/*", (req, res) => {
@@ -22,4 +29,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/dist/index.html"));
 });
 
-app.listen(3000, () => console.log("Application started successfully!"));
+app.listen(port, () =>
+  console.log(`Application started successfully! : ${port}`)
+);
