@@ -1,0 +1,27 @@
+{
+  "name": "lol-champions",
+  "version": "1.0.0",
+  "description": "lol-champions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/benoitrion/lol-champions.git"
+  },
+  "keywords": [
+    "mean",
+    "angular"
+  ],
+  "author": "Benoit Rion <benoitrion@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benoitrion/lol-champions/issues"
+  },
+  "homepage": "https://github.com/benoitrion/lol-champions#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "path": "^0.12.7"
+  }
+}
