@@ -28,7 +28,6 @@ const ChampionSchema = mongoose.Schema({
     attackspeedoffset: Number,
     attackspeedperlevel: Number
   },
-  stats: { url: String, x: Number, y: Number },
   icon: String,
   sprite: { url: String, x: Number, y: Number },
   description: String

@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/benoitrion/lol-champions#readme",
   "dependencies": {
+    "@angular/animations": "^8.2.4",
+    "@angular/cdk": "^8.1.4",
+    "@angular/material": "^8.1.4",
+    "bootstrap": "^4.3.1",
     "express": "^4.16.3",
     "mongoose": "^5.0.16",
     "path": "^0.12.7"
