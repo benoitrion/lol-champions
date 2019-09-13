@@ -15,19 +15,12 @@ router.get("/", (req, res) => {
   }
   query.skip = size * (pageNo - 1);
   query.limit = size;
-  ChampionModel.count({}, function(err, totalCount) {
+  ChampionModel.find({}, {}, query, (err, champions) => {
     if (err) {
       res.send(err);
+    } else {
+      res.json(champions);
     }
-    ChampionModel.find({}, {}, query, (err, champions) => {
-      if (err) {
-        res.send(err);
-      } else {
-        const totalPages = Math.ceil(totalCount / size);
-        const response = { champions, pages: totalPages };
-        res.json(response);
-      }
-    });
   });
 });
 

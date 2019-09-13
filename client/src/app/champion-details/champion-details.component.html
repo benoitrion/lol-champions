@@ -1,4 +1,4 @@
-<div *ngIf="champion">
+<div *ngIf="champion; else elseBlock">
   <img
     class="img"
     [src]="champion.icon"
@@ -44,3 +44,6 @@
   </ul>
   <button (click)="goBack()">Back</button>
 </div>
+<ng-template #elseBlock>  
+  Coudn't load champion
+</ng-template>

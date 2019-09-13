@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Champion } from "../model/champion";
 import { ChampionsService } from "../services/champions.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-champions-list",
@@ -11,24 +11,29 @@ import { Router } from '@angular/router';
 })
 export class ChampionsListComponent implements OnInit {
   @Input() champions: Champion[];
-  shownChampions = [];
-  range = 5;
+  page = 1;
+  size = 5;
 
-  constructor(
-    private championsService: ChampionsService) {}
+  constructor(private championsService: ChampionsService) {}
 
   ngOnInit() {
-    this.getChampionList();
-    this.loadMore();
+    this.getChampionList(this.page, this.size);
   }
 
   loadMore() {
-    this.shownChampions = this.shownChampions.concat(this.champions.slice(this.shownChampions.length, this.shownChampions.length + this.range))
+    this.getChampionList(this.page++, this.size);
   }
 
-  getChampionList(): void {
-    this.championsService.getChampionsList().subscribe(results => {
-      this.champions = results;
-    });
+  getChampionList(pageNo, size): void {
+    this.championsService.getChampionsList(pageNo, size).subscribe(
+      result => {
+        console.log(result);
+        this.champions.concat(result);
+      },
+      error => console.log(error),
+      () => {
+        // No errors, route to new page
+      }
+    );
   }
 }
