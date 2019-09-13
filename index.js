@@ -4,6 +4,9 @@ import championsRoute from "./server/routes/champions-route";
 import config from "./server/config/config.dev";
 import connectToDb from "./server/db/connect";
 
+import AssertionError from "assert";
+import MongoError from "mongodb";
+
 const port = config.serverPort;
 
 connectToDb();
