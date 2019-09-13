@@ -31,4 +31,14 @@ router.get("/", (req, res) => {
   });
 });
 
+router.get("/:id", (req, res) => {
+  const query = { id: req.params.id };
+  ChampionModel.findOne({}, {}, query, (err, champion) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(champion);
+  });
+});
+
 export default router;
