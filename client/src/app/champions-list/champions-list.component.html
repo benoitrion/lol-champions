@@ -1,23 +1,23 @@
 <div class="container">
   <h2>Champions</h2>
-  <div *ngFor="let champion of champions">
-    <div class="row" *ngIf="champions.length % 5 == 0">
-      <mat-card class="col-md-4 col-sm-6 col-12">
+  <div *ngFor="let champion of shownChampions">
+      <div>
+      <mat-card>
         <div>
-          <a href="">
-            <img
-              class="img"
-              [style.background]="'url(' + champion.sprite.url + ')'"
-              [style.background-position]="
-                champion.sprite.x + 'px ' + champion.sprite.y + 'px'
-              "
-            />
-          </a>
+          <img
+            class="img"
+            [style.background]="'url(' + champion.sprite.url + ')'"
+            [style.background-position]="
+              champion.sprite.x + 'px ' + champion.sprite.y + 'px'
+            "
+            [routerLink]="['/champions', champion.id]"
+          />
           <div class="champion-name">
-            <a href="">{{ champion.name }}</a>
+            <a [routerLink]="['/champions', champion.id]">{{ champion.name }}</a>
           </div>
         </div>
       </mat-card>
     </div>
   </div>
+  <button (click)="loadMore()">Load More</button>
 </div>

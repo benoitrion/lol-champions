@@ -1,24 +1,28 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from "@angular/material/card";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ChampionsListComponent } from "./champions-list/champions-list.component";
+import { ChampionDetailsComponent } from "./champion-details/champion-details.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { HttpClientModule } from "@angular/common/http";
-import { ChampionsListService } from "./champions-list/champions-list.service";
+import { ChampionsService } from "./services/champions.service";
 
 @NgModule({
-  declarations: [AppComponent, ChampionsListComponent],
+  declarations: [AppComponent, ChampionsListComponent, ChampionDetailsComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MatCardModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ChampionsListService],
+  providers: [ChampionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
